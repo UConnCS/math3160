@@ -22,7 +22,7 @@
 
 \subsection{Sample Space}
 
-\textbf{Definition:} The Sample Space S with respect to an Experiment E is a the set of all possible outcomes for the given experiment.
+\textbf{Definition:} The Sample Space S with respect to an Experiment E is the set of all possible outcomes for the given experiment.
 
 \subsubsection{Examples}
 
@@ -31,7 +31,7 @@
     \item A die roll has a sample space of $\{1, 2, 3, 4, 5, 6\}$.
 \end{itemize}
 
-\break
+% \break
 \subsection{Set Operations}
 \begin{itemize}
     \item Set Union:
@@ -207,7 +207,7 @@
     \end{tikzpicture}
 \end{itemize}
 
-\subsection{Events $\Leftrightarrow$ Sets}
+\subsection{Events as Sets}
 \begin{table}[h]
     \begin{tabular}{|l|l|}
     \hline
@@ -248,8 +248,68 @@ $$
 
 \subsection{Binomial Theorem}
 
-\subsection{Classical Definition of Probability}
+\textbf{Definition:} The binomial theorem is a formula that allows us to expand $(a+b)^n$ into a polynomial.
 
+$$
+(a+b)^n = \sum_{k=0}^n \binom{n}{k}a^{n-k}b^k
+$$
+
+\subsubsection{Example}
+\begin{itemize}
+    \item $(x+y)^4$
+    \begin{itemize}
+        \item $\sum_{k=0}^4 \binom{4}{k}x^{4-k}y^k$
+        \item $\binom{4}{0}x^4y^0 + \binom{4}{1}x^3y^1 + \binom{4}{2}x^2y^2 + \binom{4}{3}x^1y^3 + \binom{4}{4}x^0y^4$
+        \item $x^4 + 4x^3y + 6x^2y^2 + 4x^1y^3 + y^4$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Classical Definition of Probability}
+Let $S$ be a \textit{finite} sample space in which all outcomes are equally likely to occur, and let $A$ be an event in $S$.
+
+$\hfill \break$
+\textbf{Definition:} The classical definition of probability only applies to \textit{finite} sample spaces where all events are equally likely to occur. Under these conditions, the probability of an event $A$ is defined as the number of favorable outcomes divided by the total number of outcomes in the sample space.
+
+$$
+\frac{\text{\# of favorable outcomes}}{\text{total number of outcomes}}
+$$
+
+$\hfill \break$
+
+\subsubsection{Examples}
+\begin{enumerate}
+    \item An example of these circumstances is the probability of flipping heads on a coin. There is one favorable outcome, and there are two total outcomes, so the probability of landing heads is $\frac{1}{2} (50\%)$.
+    \item Another example is the probability of rolling a 6 on a die. There is one favorable outcome, and there are six total outcomes, so the probability of rolling a 6 is $\frac{1}{6} (16.67\%)$.
+\end{enumerate}
+ 
 \subsection{Axiomatic Definition of Probability}
+Let $S$ be a sample space, and let $A$ be an event in $S$. Let $P(A)$ be the probability of $A$.
+
+$\hfill \break$
+\textbf{Definition:} The axiomatic definition of probability always applies, as opposed to the classical definition. The axiomatic definition of probability is based on the following axioms:
+
+\begin{enumerate}
+    \item The probability of the sample space is 1.
+    \item The union of $n$ disjoint sets can be represented as the sum of the probabilities of all the sets:
+    $$
+        P(A_1 \cup A_2 \cup ...A_n) = \sum_{i=1}^n P(A_i) = 1
+    $$
+\end{enumerate}
+
+\subsubsection{Examples}
+Since the axiomatic definition of probability covers all other definitions of probability, namely the classical and frequentist definitions, we can use the axiomatic definition to find the probability of any event. As such, an example of the classical definition can be used as an example of the axiomatic definition.
+\begin{enumerate}
+    \item For example, a classical problem is finding the probability of flipping heads on a coin, which ends up being $\frac{1}{2} (50\%)$ since there are two outcomes, and only one is favorable.
+    \begin{itemize}
+        \item This satisfies both the axioms of probability, since the probability of the sample space is 1, and there are two distinctly disjoint outcomes (heads or tails) that are each half of the total probability.
+    \end{itemize}
+    \item Another example is the probability of rolling a 6 on a die. This ends up being $\frac{1}{6} (16.67\%)$ since there are six outcomes, and only one is favorable.
+    \begin{itemize}
+        \item This satisfies both the axioms of probability, since the probability of the sample space is 1, and there are six distinctly disjoint outcomes (1, 2, 3, 4, 5, and 6) that are each $\frac{1}{6}$ of the total probability.
+    \end{itemize}
+\end{enumerate}
+
+$\hfill \break$
+The intuition behind the axiomatic definition is that the probability $P$ acts like a measure of total mass one.
 
 \end{document}
