@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{MATH3160 — Portfolio 3.4-4.1}
+\author{Mike Medved}
+\date{September 21st, 2022}
+
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry} 
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+
+\begin{document}
+
+\maketitle
+
+\section{Deliverables}
+
+\subsection{Independence of Two Events}
+
+Two events, $A$ and $B$ are said to be independent if they satisfy two conditions:
+
+\begin{enumerate}
+    \item The probability of $A$ remains unchanged despite $B$ occurring: $P(A|B) = P(A)$
+    \item The intersection of $A$ and $B$ equals the product of the two probabilities: $P(A \cap B) = P(A)*P(B)$
+\end{enumerate}
+
+\subsection{Independence of Three Events}
+
+\subsubsection{Independence}
+
+The three events $A, B$ and $C$ are said to be independent if they satisfy the following condition for all the combinations of $\{A, B, C\}$.
+
+$\hfill \break$
+For all combinations of $A, B$ and $C$, the intersection between the two events must equal the product of the two probabilities. Additionally, the intersection of all three events must equal the product of all three probabilities:
+
+\begin{equation*}
+    \begin{array}{lr}
+        P(A \cap B) = P(A)*P(B)\\
+        P(A \cap C) = P(A)*P(C)\\
+        P(B \cap C) = P(B)*P(C)\\
+        P(A \cap B \cap C) = P(A)*P(B)*P(C)
+    \end{array}
+\end{equation*}
+
+$\hfill \break$
+In the case that all three equalities hold true, the three events are said to be independent.
+
+\subsubsection{Pairwise Independence}
+
+Pairwise independence is a more lenient notion, in which not all three events are simultaneously independent. Instead, the three events are said to be pairwise independent if the following conditions hold true:
+
+\begin{equation*}
+    \begin{array}{lr}
+        P(A \cap B) = P(A)*P(B)\\
+        P(A \cap C) = P(A)*P(C)\\
+        P(B \cap C) = P(B)*P(C)
+    \end{array}
+\end{equation*}
+
+$\hfill \break$
+In this way, any two pair of events can be independent, but not all three are necessarily independent.
+
+\subsection{Sure and Impossible Events}
+
+With respect to independence, there are always at least two types of events for a Sample Space $S$ which are invariably independent. These two events are that of the Sure Event and the Impossible Event.
+
+$\hfill \break$
+This is the case since nothing can influence the probability of an event which is sure to occur, and nothing can influence the probability of an event which is impossible to occur.
+
+\subsection{Complimentaries of Three Independent Events}
+
+The complimentaries of three independent events are said to be independent of each other, no matter how they are arranged. This is because any events composed of an independent event will, by definition, be independent.
+
+\subsection{Random Variables}
+
+A random variable is a function $X$ defined on a Sample Space $S$ with values that map to the real numbers.
+
+$\hfill \break$
+\textbf{Definition:} $X\colon S \to \mathbb{R}$, such that $X$ is a function mapping $S$ to the set of all real numbers. 
+
+\subsubsection{Example}
+
+An example of a random variable is the number of heads in a sequence of coin flips. The Sample Space $S$ is the set of all possible sequences of coin flips, and the random variable $X$ is the number of heads in a sequence. Thus,
+
+$$
+X\colon S \to \mathbb{R}, X(s) = \text{Number of heads in the outcome } s
+$$
+
+$\hfill \break$
+The image of X can be represented as a set of all possible values of $X$, therefore $\text{Im}(X) = \left\{0, 1, 2\right\}$, as there are the only favorable outcomes for this predicate.
+
+\end{document}
