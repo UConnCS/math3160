@@ -1,0 +1,246 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{MATH3160 — Portfolio 6.1, 6.2}
+\author{Mike Medved}
+\date{November 12th, 2022}
+
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry} 
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{pgfplots}
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\section{Deliverables}
+
+\subsection{Uniform Random Variables}
+
+A uniform random variable $X$ on interval $[a,b]$ is given by following density function, $f(k)$:
+
+\begin{equation*}
+    f(k)=
+    \begin{cases}
+        \frac{1}{b-a} & \text{if } x \in [a,b] \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{equation*}
+
+$\hfill \break$
+The density of the random variable $X$ is given by the following plot, which the distribution of $X$ on $[a, b]$:
+
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+                xlabel=$x$,
+                ylabel=$pdf(X)$,
+                xtick={0, 1, 2, 3, 4, 5, 6},
+                xticklabels={, , A, , B, , },
+                ytick={0, 1, 2},
+                ymin=0,
+                ymax=2,
+                grid=major,
+                grid style={dashed},
+                legend pos=north west,
+                legend cell align=left,
+                legend style={at={(0.5,-0.2)}, anchor=north, draw=none, fill=none, font=\footnotesize},
+            ]
+            \addplot[domain=0:2, blue, mark=none, line width=1pt] {0};
+            \addplot[domain=2:4, blue, mark=none, line width=1pt] {1};
+            \addplot[domain=4:6, blue, mark=none, line width=1pt] {0};
+            \addlegendentry{$pdf(X)$};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+\subsubsection{Universality}
+
+Universality refers to the fact that we can plug in the inverse of the cumulative distribution function (cdf) in order to retrieve the random variable $X$.
+
+$\hfill \break$
+\textbf{Part 1.} Let $X$ be a uniform random variable on $[a, b]$. Then, the distribution function $F_X \sim \textit{U}[0, 1]$.
+
+$\hfill \break$
+\textbf{Part 2.} Let $X$ be a uniform random variable on $[a, b]$. Then, $\forall t \sim \textit{U}[0,1]$, $F_X^{-1}(t) \sim \textit{U}[a, b]$ where $F_X$ is the distribution function of $X$ which is continuous and strictly increasing.
+
+\subsubsection{Computing the Probabilities on Subintervals}
+
+Given a uniform random variable $X$ on $[a, b]$, we can derive a formula to calculate the probability that $X$ takes a value in $[c, d] \subseteq [a, b]$. This is given by taking the difference in lengths for the two intervals:
+
+$$
+P\left(X \in [c,d]\right) = \frac{len\left([c,d]\right)}{len\left([a,b]\right)} = \frac{d-c}{b-a}
+$$
+
+\subsubsection{Linear Transformations}
+
+Let $X$ be a uniform random variable on $[a, b]$. Then, the random variable $Y = aX + b$ is uniformly distributed on $[aX + b, bX + b]$. With this, the newly created random variable $Y$ is a uniform random variable.
+
+$\hfill \break$
+\textbf{Example:} Let $X \sim \textit{U}[2,4]$, find $Y = 3X + 5$:
+
+\begin{align*}
+    P(3\cdot X + 5 \in [15, 17]) &= Y \sim \textit{U}[3\cdot 2 + 5, 3\cdot 4 + 5] \\
+    &= \textit{U}[11, 17] \Rightarrow \frac{len([15,17])}{len([11,17])} \\
+    &= \frac{1}{3}
+\end{align*}
+
+\newpage
+\subsection{Exponential Random Variables}
+
+The exponential random variable $X$ is an application of the Poisson random variable, and the continuous analog of the geometric random variable.
+
+$\hfill \break$
+\textbf{Definition:} Let $X$ be a random variable with density function $f(x)$. Then, $X$ is said to be an exponential random variable with parameter $\lambda > 0$ if $f(x) = \lambda e^{-\lambda x}$ for $x \geq 0$.
+
+$\hfill \break$
+In practice, finding when the exponential random variable takes values greater than an arbitrary non-zero parameter $t$ is quite useful. In order to accomplish this, we can use the following simple formula:
+
+$$
+P(X > t) = e^{-t \cdot \lambda}
+$$
+
+$\hfill \break$
+The three most important types of examples for an exponential random variable are the following:
+
+\begin{enumerate}
+    \item The time between arrivals of a Poisson process.
+    \item The time between failures of a system.
+    \item The time between successes of a system.
+\end{enumerate}
+
+\subsubsection{Connection to the Poisson Random Variable}
+
+The exponential random variable is connected to the Poisson random variable since the Poisson random variable measures the amount of occurrences per a given time interval, while an exponential random variable measures the time between such occurrences on a continuous interval.
+
+\begin{thm}
+    Let $X$ be an exponential random variable with parameter $\lambda > 0$. We can integrate it's distribution function in order to obtain the density function $\lambda e^{-\lambda x}$.
+\end{thm}
+
+\begin{proof}
+    Let $X$ be an exponential random variable with parameter $\lambda > 0$. Then, the distribution function $F(x) = P(X \leq t)$ is given by the following where $t \geq 0$:
+
+    \begin{align*}
+        F_X(t) &= \int_{-\infty}^{t} \lambda e^{-\lambda t} dt \\
+        &= \left[ -e^{-\lambda t} \right]_{-\infty}^{x} \\
+        &= -e^{-\lambda x} + 1 \\
+        &= 1 - e^{-\lambda x}
+    \end{align*}
+
+    $\hfill \break$
+    Therefore, the density function $f(x) = F'(x)$ is given by:
+
+    \begin{align*}
+        f(x) &= \lambda e^{-\lambda x}
+    \end{align*}
+\end{proof}
+
+$\hfill \break$
+In this way, given a Poisson random variable $X$ with parameter $\lambda > 0$, we can use the exponential random variable $Y$ with parameter $\lambda$ to compute the time between occurrences, or vise-versa.
+
+\newpage
+$\hfill \break$
+\textbf{Examples:}
+
+\begin{enumerate}
+    \item The average number of cars per-hour arriving at a given location is 4/hr, $Y \sim Poiss(4)$.
+    \begin{itemize}
+        \item If a car arrives now, find $P(\textit{Wait} > 15 \textit{min for next car})$: \\
+        \textbf{Solution:} $X \xRightarrow{\textit{def}}$ Wait time between consecutive arrivals $\sim Exp(4)$ (measured in hours)
+        \begin{align*}
+            P(X > 15 \textit{min}) &\Leftrightarrow P(X > \frac{1}{4} \textit{hr}) \\
+            &\xRightarrow{(\alpha)} P(X > \frac{1}{4} \textit{hr}) \\ 
+            &= e^{-\frac{1}{4} \cdot 4} \\
+            &= e^{-1} \approx 0.368
+        \end{align*}
+    \end{itemize}
+    \item The number of clients entering a store per-12-hours is 300, $Y \sim Poiss(\frac{300}{12} = 25)$.
+    \begin{itemize}
+        \item If a client arrows now, find $P(Wait < 10 \textit{min})$: \\
+        \textbf{Solution:} $X \xRightarrow{\textit{def}}$ Wait time between two consecutive clients $\sim Exp(25)$ (measured in hours)
+        \begin{align*}
+            P(X < 10) &\Leftrightarrow P(X < \frac{1}{6} \textit{hr}) \\
+            &\Rightarrow 1 - P(X > \frac{1}{6} \textit{hr}) \\
+            &\xRightarrow{(\alpha)} e^{-25 \cdot \frac{1}{6}} \\
+            &= 1 - e^{-\frac{25}{6}} \approx 0.9844
+        \end{align*}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Discrete Analog}
+
+When referring to different types of continuous random variables, it is important to look at their discrete analogs. In this way, we can see how the continuous random variable is related to the discrete variant.
+
+$\hfill \break$
+For the exponential random variable, the discrete analog is the geometric random variable. The geometric random variable is a random variable that measures the number of trials until a success occurs, while the exponential random variable measures the time between successes.
+
+\newpage
+\subsubsection{Memoryless Property}
+
+The memoryless property for an exponential random variable states the following:
+
+$\hfill \break$
+Given an exponential random variable $X$ with parameter $\lambda > 0$, the probability that $X$ takes a value greater than $t$ is independent of any previous results gathered by $X$. Formally,
+
+$$
+P(X > s + t | X > s) = P(X > t) \quad \forall s, t > 0
+$$
+
+\begin{thm}
+    Let $X$ be an exponential random variable with a non-zero parameter $\lambda$, then the memoryless property must hold.
+\end{thm}
+
+\begin{proof}
+    Let the right hand side (RHS) of the expression that models $P(X > s + t | X > s) = P(X > t)$ equal $P(X > t)$, and the left hand side (LHS) equal $P(X > s + t | X > s)$.
+
+    \begin{align*}
+        RHS = P(X > t) &= \int_t^{\infty} \lambda e^{-\lambda x} dx \\
+        &= 1 \cdot \left(-\frac{1}{1} e^{\lambda x}\right)_{t}^{\infty} \\
+        &= \left[ -e^{-\lambda x} \right]_t^{\infty} \Rightarrow -\left[e^{-\lambda \cdot \infty} - e^{-\lambda \cdot t}\right] \\
+        &= -e^{-\lambda \cdot t}
+    \end{align*}
+
+    $\hfill \break$
+    Therefore, for a given $X \sim Exp(\lambda)$, $P(X > t) = -e^{-\lambda t}$. This solution will be later referred to as $\alpha$. With this known, we can now evaluate the LHS of the expression.
+
+    $\hfill \break$
+    The LHS of this expression is a conditional probability, with the following event definitions:
+
+    \begin{itemize}
+        \item $Event_A = X > s + t$
+        \item $Event_B = X > s$
+    \end{itemize}
+
+    $\hfill \break$
+    By definition, a conditional probability takes the form $\frac{P(A \cap B)}{P(B)}$, with $A, B$ referring to the events defined above. In this context, $A \subseteq B$, which means $P(A \cap B) = P(A)$. Therefore, the LHS of the expression can be rewritten as:
+
+    $$
+    \frac{P(A \cap B)}{P(B)} \xRightarrow{A \subseteq B} \frac{P(A)}{P(B)}
+    $$
+
+    \newpage
+    $\hfill \break$
+    Now, we can evaluate the LHS of the expression:
+
+    \begin{align*}
+        LHS &= \frac{P(A)}{P(B)} \\
+        &= \frac{P(X > s + t)}{P(X > s)} \\
+        &\xRightarrow{(\alpha)} \frac{e^{-\lambda(s + t)}}{e^{-\lambda s}} \\
+        &\Rightarrow \frac{e^{-\lambda s} \cdot e^{-\lambda t}}{e^{-\lambda s}} \\
+        &= e^{-\lambda t}
+    \end{align*}
+
+    $\hfill \break$
+    Therefore, we have shown that the memoryless property holds through a direct proof of the fact that the left hand side equals the right hand side for this expression.
+\end{proof}
+
+\end{document}
