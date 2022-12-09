@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{MATH3160 — Portfolio 6.4}
+\author{Mike Medved}
+\date{December 5th, 2022}
+
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage[margin=1in]{geometry} 
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\section{Deliverables}
+
+\subsection{Independent Identically Distributed Random Variables}
+
+It is said that a set of random variables are IID if the following conditions are met if both the random variables are independent of each other, and are distributed identically.
+
+\subsubsection{Example}
+
+An example of ten IID random variables is rolling 10 independent fair dice. The probability of rolling a given number is $\frac{1}{6}$ regardless of which die you are tracking, and the probability of rolling a given number on any die is independent of the other dice. Thus, the ten dice are IID with respect to one another.
+
+$\hfill \break$
+We can compute the probability of the total sum of the ten dice being between 30 and 40 (inclusive) as follows:
+
+$\hfill \break$
+As each roll is IID, let $X_i$ be the number rolled on the $i$th die. We can see that $X = \{X_1 \cdots X_{10}\} \sim \textit{Unif}\{1 ... 6\}$ with parameters $\mu = 3.5, \sigma^2 = 2.91$. We can now compute the final probability:
+
+\begin{align*}
+    P(30 \leq \sum_{i=1}^{10} X_i \leq 40) &\xRightarrow{\text{Cntrl Lim Thrm}} \frac{X_1 + \cdots + X_10}{10} \approx \mathcal{N}\left(3.5,\frac{2.91}{10}\right) \\
+    &\xRightarrow{\text{Expansion}} P(30 \leq X_1 + X_2 + \cdots + X_{10} \leq 40) \\
+    &\xRightarrow{\text{Simplify}} P(\frac{30}{10} \leq \frac{X_1 + X_2 + \cdots + X_{10}}{10} \leq \frac{40}{10}) \\
+    &\xRightarrow{\text{Simplify}} P(3 \leq \frac{X_1 + X_2 + \cdots + X_{10}}{10} \leq 4) \\
+    &\xRightarrow{\text{Std Norm}} P\left(\frac{3-3.5}{\sqrt{0.291}} \leq \frac{X_1 + \cdots + X_10}{10} \leq \frac{4-3.5}{\sqrt{0.291}}\right) \\
+    &\Rightarrow P(-0.92 \leq Z \leq 0.92) \\
+    &\Rightarrow \phi(0.92) - \phi(-0.92) \\
+    &\Rightarrow 2\phi(0.92) = 2(0.82) - 1 \\
+    &= 0.64
+\end{align*}
+
+\subsection{Central Limit Theorem}
+
+The Central Limit Theorem is used to approximate the distribution of a sum of IID random variables.
+
+$\hfill \break$
+\textbf{Definition:} Let $X_1, ..., X_n$ be IID random variables of expectation $\mu$ and variance $\sigma^2$, then:
+
+$$
+\frac{X_1 + ... + X_n}{n} \approx \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right).
+$$
+
+\end{document}

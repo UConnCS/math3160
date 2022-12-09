@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{MATH3160 — Discrete Case Portfolio}
+\author{Mike Medved}
+\date{December 7th, 2022}
+
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage[margin=1in]{geometry} 
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\section{Deliverables}
+
+\subsection{Joint Distribution Function}
+
+Let $X, Y$ be two discrete random variables for the sake of the below definitions and exercises.
+
+\subsubsection{Joint Distribution Function}
+
+The joint distribution function of $X$ and $Y$ is defined on $F \colon \mathbb{R}^2 \rightarrow [0,1]$, with the following formula:
+
+\begin{equation*}
+    F(x,y) = P(X \leq x, Y \leq y)
+\end{equation*}
+
+\subsubsection{Joint Probability Mass Function}
+
+The joint pmf of $X$ and $Y$ is defined on $f \colon \textit{Im X} \times \textit{Im Y} \rightarrow [0,1]$, and takes the following formula:
+
+\begin{equation*}
+    f(x,y) = P(X = x, Y = y) \quad \forall (x,y) \in \textit{Im X} \times \textit{Im Y}
+\end{equation*}
+
+\subsubsection{Independence of $X$ and $Y$}
+
+$X$ and $Y$ are said to be independent if their pmf functions hold the following: $f(x,y)=f_X(x) \cdot f_Y(y)$. However, in order to be independent, this property must hold $\forall (x,y) \in \textit{Im X} \times \textit{Im Y}$.
+
+$\hfill \break$
+Equivalently, $X$ and $Y$ are also said to be independent if their distribution functions hold the following property, $F(x,y) = F_X(x) \cdot F_Y(y)$.
+
+\subsubsection{Examples}
+
+Let us throw two fair dice, the random variable $X$ will represent the number of sixes rolled between the two dice, and $Y$ will represent the number that appeared on die 1.
+
+$\hfill \break$
+In this way, the sample space $S$ for this experiment is:
+
+\begin{align*}
+    S &= \{(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6) \\
+    &= \dots \\
+    &= (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)\}
+\end{align*}
+
+$\hfill \break$
+In this way, the joint pmf table for $X, Y$ is:
+
+
+
+\end{document}
