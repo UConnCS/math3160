@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{MATH3160 — Continuous Case Portfolio}
+\author{Mike Medved}
+\date{December 10th, 2022}
+
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage[margin=1in]{geometry} 
+\usepackage[dvipsnames,table]{xcolor}
+
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\section{Deliverables}
+
+\subsection{Joint Continuous Random Variables}
+
+Let $X, Y$ be two discrete random variables for the sake of the below definitions and exercises.
+
+\subsubsection{Joint Distribution Function}
+
+The joint distribution function of $X$ and $Y$ is defined on $F \colon \mathbb{R}^2 \rightarrow [0,1]$, with the following formula:
+
+\begin{equation*}
+    F(x,y) = P(X \leq x, Y \leq y) = \int_{-\infty}^x \int_{-\infty}^y f(u, v) \, \mathrm{d}v \, \mathrm{d}u
+\end{equation*}
+
+\subsubsection{Joint Density Function}
+
+The joint density of $X$ and $Y$ is defined on $f \colon \mathbb{R}^2 \rightarrow [0,\infty]$, and takes the following formula:
+
+\begin{equation*}
+    f(x,y) = P((x, y) \in \mathbb{R}^2) = \iint_D f(x,y) \, \mathrm{d}x \, \mathrm{d}y \text{ } \forall D \in \mathbb{R}^2
+\end{equation*}
+
+\subsubsection{Independence of $X$ and $Y$}
+
+$X$ and $Y$ are said to be independent if their marginal densities hold equal their joint density, as such: $f(x,y)=f_X(x) \cdot f_Y(y)$. However, in order to be independent, this property must hold $\forall (x,y) \in \mathbb{R}^2$.
+
+$\hfill \break$
+Equivalently, $X$ and $Y$ are also said to be independent if their marginal distributions hold the following property, $F(x,y) = F_X(x) \cdot F_Y(y) \text{ } \forall (x,y) \in \mathbb{R}^2$.
+
+\subsubsection{Importance of the Density Function}
+
+The density function for a pair of continuous random variables presents an remarkable property, that it's integral over the entire space is equal to 1.
+
+$\hfill \break$
+This property holds because the integral $\iint_D f(x,y) \, \mathrm{d}x \, \mathrm{d}y$ over the domain $D$ represents the volume of the sample space, and due to the law of total probability, the volume of the sample space must be equal to 1.
+
+\subsubsection{Marginal Densities}
+
+The marginal density of $X$ is defined as $f_X(x) = \int_{x}^{1} f(x,y) \, \mathrm{d}y$, and the marginal density of $Y$ is defined as $f_Y(y) = \int_{y}^{1} f(x,y) \, \mathrm{d}x$.
+
+\end{document}
